@@ -2,40 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mostlyon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
+    :root {
+      --background: #0f0f0f;
+      --primary: #ffffff;
+      --accent: #ff3e7f;
+      --font: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #1a1a1a;
-      color: #ffffff;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--primary);
+      font-family: var(--font);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
       text-align: center;
+      padding: 2rem;
     }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.2em;
-    }
-    h2 {
-      font-size: 1.8em;
-      color: #ff4081;
-      margin-bottom: 0.4em;
-    }
-    p {
-      font-size: 1.2em;
+
+    .container {
       max-width: 600px;
-      margin: 0 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Work In Progress</h1>
-  <h2>mostlyon.me</h2>
-  <p>It is basically create your bio website </p>
+  <div class="container">
+    <h1>in progress...</h1>
+    <h2>mostlyon.me</h2>
+    <p>We’re working to build a personal bio website to show our work, ideas and many more</p>
+  </div>
 </body>
 </html>
