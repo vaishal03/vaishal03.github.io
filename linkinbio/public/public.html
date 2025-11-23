@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <style>
+        body { font-family: Arial; padding: 40px; background: #f5f5f5; text-align:center; }
+        #linksList a { display:block; margin:10px auto; max-width:380px; padding:12px;
+                       background:black; color:white; border-radius:8px;
+                       text-decoration:none; font-size:18px; }
+    </style>
+</head>
+<body>
+
+<h2 id="usernameTitle">Loading...</h2>
+<div id="linksList"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBH6hhP7-JUZJdTirFGA-6W9_unIC1k6Lo",
+  authDomain: "newpro-fa54b.firebaseapp.com",
+  projectId: "newpro-fa54b",
+  storageBucket: "newpro-fa54b.firebasestorage.app",
+  messagingSenderId: "541759932178",
+  appId: "1:541759932178:web:4b3feedfbb5a10b33e55cb"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const path = window.location.pathname;
+const username = path.replace("/", "");
+usernameTitle.innerText = "@" + username;
+
+const q = query(collection(db, "users"), where("username", "==", username));
+const snap = await getDocs(q);
+
+if (snap.empty) {
+  usernameTitle.innerText = "User Not Found";
+  linksList.innerHTML = "";
+} else {
+  const data = snap.docs[0].data();
+  let html = "";
+  data.links.forEach(l => {
+    html += `<a href="${l.url}" target="_blank">${l.title}</a>`;
+  });
+  linksList.innerHTML = html;
+}
+</script>
